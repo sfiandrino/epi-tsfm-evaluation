@@ -28,8 +28,6 @@ season-2024-25/            retrospective evaluation (Supplementary Information, 
 
 - **2025/26:** 27 weekly rounds, November 22, 2025 – May 23, 2026, for both hubs.
 - **2024/25:** 25 weekly rounds, November 30, 2024 – May 24, 2025, for both hubs (no hub round on 2025-01-18).
-- **Date convention.** Files are named after the last week of data (`reference_date` = last `truth_date`; horizon 0 = the following week). The hubs use the following Saturday as reference date, so the hub forecasts are shifted back by 7 days when downloaded (`01a`). For example, the TSFM round `2026-04-25` uses the data released on Wednesday 2026-04-29 and corresponds to the hub round with reference date 2026-05-02.
-- Only official hub rounds are scored (reference dates with a hub ensemble).
 
 ## TSFM forecasts and inputs
 
