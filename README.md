@@ -1,6 +1,6 @@
 # Are time series foundation models the new frontier for operational epidemic forecasting?
 
-Forecasts, code and evaluation results for the paper *"Are time series foundation models the new frontier for operational epidemic forecasting?"* (Fiandrino et al.).
+Forecasts, code and evaluation results for the manuscript *"Are time series foundation models the new frontier for operational epidemic forecasting?"*
 
 We evaluate six time series foundation models (TSFMs): Chronos-2, Lag-Llama, Moirai-2, TabPFN-TS, TimeGPT and TimesFM. They forecast weekly laboratory-confirmed influenza (FluSight) and COVID-19 (CovidHub) hospital admissions for the U.S. national level and 52 U.S. jurisdictions, 0 to 3 weeks ahead, as 23 quantiles. The TSFMs are benchmarked against the models submitted to the two CDC-coordinated hubs. The 2025/26 season is a prospective evaluation (main text), and the 2024/25 season is a retrospective evaluation (Supplementary Information, Sec. S3).
 
