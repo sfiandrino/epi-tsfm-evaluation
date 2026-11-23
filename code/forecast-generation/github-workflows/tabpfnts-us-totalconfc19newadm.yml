@@ -1,0 +1,20 @@
+name: tabpfnts-us-totalconfc19newadm
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "05 00 * * 4"  # Thu 00:05 UTC
+
+permissions:
+  contents: write
+
+jobs:
+  call:
+    permissions:
+      contents: write
+    uses: ./.github/workflows/tabpfnts-engine.yml 
+    with:
+      target: "totalconfc19newadm"
+      outdir: "model-output/CovidHub/TabPFN-TS"
+    secrets:
+      TABPFN_ACCESS_TOKEN: ${{ secrets.TABPFN_ACCESS_TOKEN }}

@@ -1,0 +1,18 @@
+name: chronos-us-totalconfc19newadm
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "00 23 * * 3"  # Wed 23:00 UTC
+
+permissions:
+  contents: write
+
+jobs:
+  call:
+    permissions:
+      contents: write
+    uses: ./.github/workflows/chronos-engine.yml
+    with:
+      target: "totalconfc19newadm"
+      outdir: "model-output/CovidHub/Chronos-2"

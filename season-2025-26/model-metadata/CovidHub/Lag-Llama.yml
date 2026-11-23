@@ -1,0 +1,37 @@
+team_name: "MOBS Lab at Northeastern University and ISI Foundation"
+team_abbr: "MOBS_ISI"
+model_name: "Lag-Llama"
+model_abbr: "Lag-Llama"
+model_version: "1.0"
+model_contributors: [
+    {
+    "name": "Stefania Fiandrino",
+    "affiliation": "Sapienza, University of Rome, ISI Foundation"
+  },
+    {
+    "name": "Sara Venturini",
+    "affiliation": "MOBS Lab, Northeastern University"
+  },
+  {
+    "name": "Alessandra Urbinati",
+    "affiliation": "MOBS Lab, Northeastern University"
+  },
+  {
+    "name": "Alessandro Vespignani",
+    "affiliation": "MOBS Lab, Northeastern University"
+  },
+  {
+    "name": "Nicolò Gozzi",
+    "affiliation": "ISI Foundation"
+  },
+]
+website_url: "https://www.mobs-lab.org/"  
+license: "CC-BY_SA-4.0"
+designated_model: true
+citation: " "  
+team_funding: "We acknowledge support from cooperative agreement CDC-RFA-FT-23-0069 from the CDC’s Center for Forecasting and Outbreak Analytics."
+methods: "Lag-Llama, time series foundation model."
+data_inputs: "Weekly incident COVID-19 hospitalizations"
+methods_long: "Lag-Llama is a time series foundation model."
+ensemble_of_models: false
+ensemble_of_hub_models: false

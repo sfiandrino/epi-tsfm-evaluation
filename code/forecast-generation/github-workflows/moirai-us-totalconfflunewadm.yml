@@ -1,0 +1,18 @@
+name: moirai-us-totalconfflunewadm
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "35 01 * * 4"  # Thu 01:35 UTC
+
+permissions:
+  contents: write
+
+jobs:
+  call:
+    permissions:
+      contents: write
+    uses: ./.github/workflows/moirai-engine.yml 
+    with:
+      target: "totalconfflunewadm"
+      outdir: "model-output/FluSight/Moirai-2"

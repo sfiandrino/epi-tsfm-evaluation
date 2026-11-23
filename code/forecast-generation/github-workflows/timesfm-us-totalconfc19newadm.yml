@@ -1,0 +1,18 @@
+name: timesfm-us-totalconfc19newadm
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "00 22 * * 3"  # Wed 22: UTC
+
+permissions:
+  contents: write
+
+jobs:
+  call:
+    permissions:
+      contents: write
+    uses: ./.github/workflows/timesfm-engine.yml
+    with:
+      target: "totalconfc19newadm"
+      outdir: "model-output/CovidHub/TimesFM"

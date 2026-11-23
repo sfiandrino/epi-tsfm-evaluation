@@ -1,0 +1,20 @@
+name: timegpt-us-totalconfc19newadm
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "05 01 * * 4"  # Thu 01:05 UTC
+
+permissions:
+  contents: write
+
+jobs:
+  call:
+    permissions:
+      contents: write
+    uses: ./.github/workflows/timegpt-engine.yml 
+    with:
+      target: "totalconfc19newadm"
+      outdir: "model-output/CovidHub/TimeGPT"
+    secrets:
+      TIMEGPT_ACCESS_TOKEN: ${{ secrets.TIMEGPT_ACCESS_TOKEN }}

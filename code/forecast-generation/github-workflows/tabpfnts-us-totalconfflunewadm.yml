@@ -1,0 +1,20 @@
+name: tabpfnts-us-totalconfflunewadm
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "30 23 * * 3"  # Wed 23:30 UTC
+
+permissions:
+  contents: write
+
+jobs:
+  call:
+    permissions:
+      contents: write
+    uses: ./.github/workflows/tabpfnts-engine.yml 
+    with:
+      target: "totalconfflunewadm"
+      outdir: "model-output/FluSight/TabPFN-TS"
+    secrets:
+      TABPFN_ACCESS_TOKEN: ${{ secrets.TABPFN_ACCESS_TOKEN }}

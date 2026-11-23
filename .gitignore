@@ -1,0 +1,18 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.RData
+.RDataTmp*
+.Rhistory
+.Rproj.user/
+*.Rproj
+.env
+# hub forecasts downloaded by 01a_download_hub_forecasts.ipynb (public in the CDC repositories)
+season-*/model-output/*/*
+!season-*/model-output/*/Chronos-2/
+!season-*/model-output/*/Lag-Llama/
+!season-*/model-output/*/Moirai-2/
+!season-*/model-output/*/TabPFN-TS/
+!season-*/model-output/*/TimeGPT/
+!season-*/model-output/*/TimesFM/

@@ -1,0 +1,80 @@
+name: timegpt-engine
+
+on:
+  workflow_call:
+    inputs:
+      target:
+        required: true
+        type: string
+      outdir:
+        required: true
+        type: string
+    secrets:
+      TIMEGPT_ACCESS_TOKEN:
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: timegpt-engine
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    env:
+      OMP_NUM_THREADS: "2"
+      MKL_NUM_THREADS: "2"
+      TARGET: ${{ inputs.target }}
+      OUTDIR: ${{ inputs.outdir }}
+      TIMEGPT_ACCESS_TOKEN: ${{ secrets.TIMEGPT_ACCESS_TOKEN }}
+      MODEL_NAME: "TimeGPT"
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: "forecast-generation/requirements.txt"
+
+      - name: Upgrade pip tooling
+        run: python -m pip install --upgrade pip setuptools wheel
+
+      - name: Install dependencies
+        run: python -m pip install -r forecast-generation/requirements.txt
+      
+      - name: Install Nixtla
+        run: python -m pip install --no-cache-dir nixtla
+
+      - name: Run TimeGPT forecasts
+        working-directory: season-2025-26
+        run: python -u ../forecast-generation/run_forecasts.py --target "${TARGET}" --model_name "${MODEL_NAME}"
+
+      - name: Commit and push updated CSVs and Plots
+        working-directory: season-2025-26
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          csv_files=("${OUTDIR}/"*-"${MODEL_NAME}".csv)
+          png_files=("${OUTDIR}/plots/"*-"${MODEL_NAME}".png)
+
+          git add -f "${csv_files[@]}" "${png_files[@]}"
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          git commit -m "Update ${MODEL_NAME} forecasts (${TARGET})"
+          git push
